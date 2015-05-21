@@ -166,6 +166,7 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   mode '00640'
+  sensitive(true) if Chef::Resource.method_defined?(:sensitive)
   content key['private']
 end
 
