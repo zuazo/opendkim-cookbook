@@ -116,7 +116,8 @@ selector = '20150512'
 # private key, or a path to a file containing one of those.
 key_table_default = default['opendkim']['conf']['KeyTable']
 key_table_default["csl:#{selector}._domainkey.#{main_domain}"] =
-  "#{main_domain}:mail:/etc/opendkim/keys/#{main_domain}/#{selector}.private"
+  "#{main_domain}:#{selector}:"\
+  "/etc/opendkim/keys/#{main_domain}/#{selector}.private"
 
 # Defines a dataset that will be queried for the message sender's address
 # to determine which private key(s) (if any) should be used to sign the
