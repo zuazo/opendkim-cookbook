@@ -1,0 +1,41 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: true
+
+platforms:
+- name: centos-5.11
+- name: centos-6.6
+- name: centos-7.0
+- name: debian-6.0.10
+  run_list: ["recipe[apt]"]
+- name: debian-7.8
+  run_list: ["recipe[apt]"]
+- name: fedora-19
+  driver_config:
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_fedora-19_chef-provisionerless.box
+- name: fedora-20
+- name: fedora-21
+# FreeBSD platform requires to run kitchen verify twice by hand
+# - name: freebsd-9.2
+#   run_list: ["recipe[freebsd::portsnap]"]
+#   driver_config:
+#     box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_freebsd-9.2_chef-provisionerless.box
+# - name: freebsd-10.1
+#   run_list: ["recipe[freebsd::portsnap]"]
+- name: ubuntu-10.04
+  run_list: ["recipe[apt]"]
+- name: ubuntu-12.04
+  run_list: ["recipe[apt]"]
+- name: ubuntu-14.04
+  run_list: ["recipe[apt]"]
+- name: ubuntu-14.10
+  run_list: ["recipe[apt]"]
+
+suites:
+- name: default
+  run_list:
+  - recipe[opendkim_test]
