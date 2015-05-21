@@ -107,6 +107,7 @@ For more information about this configuration options, see [opendkim.conf(5)](ht
 ```ruby
 main_domain = 'example.com'
 selector = '20150512'
+key_name = "#{selector}._domainkey.#{main_domain} "\
 
 # Configure OpenDKIM
 
@@ -114,10 +115,7 @@ selector = '20150512'
 # the form (signing domain, signing selector, private key). The private key can
 # either contain a PEM-formatted private key, a base64-encoded DER format
 # private key, or a path to a file containing one of those.
-key_table_default = default['opendkim']['conf']['KeyTable']
-key_table_default["csl:#{selector}._domainkey.#{main_domain}"] =
-  "#{main_domain}:#{selector}:"\
-  "/etc/opendkim/keys/#{main_domain}/#{selector}.private"
+default['opendkim']['conf']['KeyTable'] = 'refile:/etc/opendkim/KeyTable'
 
 # Defines a dataset that will be queried for the message sender's address
 # to determine which private key(s) (if any) should be used to sign the
@@ -132,15 +130,24 @@ key_table_default["csl:#{selector}._domainkey.#{main_domain}"] =
 default['opendkim']['conf']['SigningTable'] =
   'refile:/etc/opendkim/SigningTable'
 
-# We create the Signing Table
+# We create the Key Table and Signing Table files
 
 directory '/etc/opendkim' do
   mode '00755'
 end
 
+file '/etc/opendkim/KeyTable' do
+  mode '00644'
+  content(
+    "#{key_name} "\
+    "#{main_domain}:#{selector}:"\
+    "/etc/opendkim/keys/#{main_domain}/#{selector}.private\n"
+  )
+end
+
 file '/etc/opendkim/SigningTable' do
   mode '00644'
-  content "*@#{main_domain} #{selector}._domainkey.#{main_domain}"
+  content "*@#{main_domain} #{key_name}\n"
 end
 
 # Install OpenDKIM
@@ -166,7 +173,7 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   mode '00640'
-  sensitive(true) if Chef::Resource.method_defined?(:sensitive)
+  sensitive true if Chef::Resource.method_defined?(:sensitive)
   content key['private']
 end
 
