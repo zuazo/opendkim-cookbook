@@ -119,7 +119,7 @@ end
 # the form (signing domain, signing selector, private key). The private key can
 # either contain a PEM-formatted private key, a base64-encoded DER format
 # private key, or a path to a file containing one of those.
-default['opendkim']['conf']['KeyTable'] = 'refile:/etc/opendkim/KeyTable'
+node.default['opendkim']['conf']['KeyTable'] = 'refile:/etc/opendkim/KeyTable'
 
 file '/etc/opendkim/KeyTable' do
   mode '00644'
@@ -139,7 +139,7 @@ end
 # that should be used to sign the message. If MultipleSignatures
 # is set, all possible lookup keys will be attempted which may result
 # in multiple signatures being applied.
-default['opendkim']['conf']['SigningTable'] =
+node.default['opendkim']['conf']['SigningTable'] =
   'refile:/etc/opendkim/SigningTable'
 
 file '/etc/opendkim/SigningTable' do
@@ -219,9 +219,8 @@ node.default['postfix']['main']['non_smtpd_milters'] =
 include_recipe 'postfix-full'
 
 # Configure OpenDKIM
-default['opendkim']['conf']['Mode'] = 'sv'
-default['opendkim']['conf']['Socket'] =
-  "inet:#{opendkim_port}@localhost"
+node.default['opendkim']['conf']['Mode'] = 'sv'
+node.default['opendkim']['conf']['Socket'] = "inet:#{opendkim_port}@localhost"
 
 # [...]
 include_recipe 'opendkim'
