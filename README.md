@@ -105,17 +105,29 @@ This is a complete example that reads the DKIM key from a chef vault bag using t
 For more information about this configuration options, see [opendkim.conf(5)](http://www.opendkim.org/opendkim.conf.5.html) and [opendkim(8)](http://www.opendkim.org/opendkim.8.html).
 
 ```ruby
-main_domain = 'example.com'
-selector = '20150512'
-key_name = "#{selector}._domainkey.#{main_domain} "\
+domain = 'example.com'
+selector = '20150522'
+key_name = "#{selector}._domainkey.#{domain} "\
 
-# Configure OpenDKIM
+directory '/etc/opendkim' do
+  mode '00755'
+end
+
+# Configure and Create OpenDKIM Tables
 
 # Defines a table that will be queried to convert key names to sets of data of
 # the form (signing domain, signing selector, private key). The private key can
 # either contain a PEM-formatted private key, a base64-encoded DER format
 # private key, or a path to a file containing one of those.
 default['opendkim']['conf']['KeyTable'] = 'refile:/etc/opendkim/KeyTable'
+
+file '/etc/opendkim/KeyTable' do
+  mode '00644'
+  content(
+    "#{key_name} "\
+    "#{domain}:#{selector}:/etc/opendkim/keys/#{domain}/#{selector}.private\n"
+  )
+end
 
 # Defines a dataset that will be queried for the message sender's address
 # to determine which private key(s) (if any) should be used to sign the
@@ -130,24 +142,9 @@ default['opendkim']['conf']['KeyTable'] = 'refile:/etc/opendkim/KeyTable'
 default['opendkim']['conf']['SigningTable'] =
   'refile:/etc/opendkim/SigningTable'
 
-# We create the Key Table and Signing Table files
-
-directory '/etc/opendkim' do
-  mode '00755'
-end
-
-file '/etc/opendkim/KeyTable' do
-  mode '00644'
-  content(
-    "#{key_name} "\
-    "#{main_domain}:#{selector}:"\
-    "/etc/opendkim/keys/#{main_domain}/#{selector}.private\n"
-  )
-end
-
 file '/etc/opendkim/SigningTable' do
   mode '00644'
-  content "*@#{main_domain} #{key_name}\n"
+  content "*@#{domain} #{key_name}\n"
 end
 
 # Install OpenDKIM
@@ -159,17 +156,17 @@ include_recipe 'opendkim'
 # node#save avoids chef-vault chicken & egg problem (a bit tricky)
 node.save unless Chef::Config[:solo]
 include_recipe 'chef-vault'
-key = chef_vault_item('dkim_keys', main_domain)
+key = chef_vault_item('dkim_keys', domain)
 
 # Create the credential files
 
-directory "/etc/opendkim/keys/#{main_domain}" do
+directory "/etc/opendkim/keys/#{domain}" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   recursive true
 end
 
-file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
+file "/etc/opendkim/keys/#{domain}/#{selector}.private" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   mode '00640'
@@ -178,7 +175,7 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
 end
 
 # The txt is optional
-file "/etc/opendkim/keys/#{main_domain}/#{selector}.txt" do
+file "/etc/opendkim/keys/#{domain}/#{selector}.txt" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   mode '00644'
