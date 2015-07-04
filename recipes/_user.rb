@@ -19,12 +19,6 @@
 # limitations under the License.
 #
 
-directory node['opendkim']['run_dir'] do
-  owner node['opendkim']['user']
-  group node['opendkim']['group']
-  mode '00755'
-end
-
 user node['opendkim']['user'] do
   comment 'OpenDKIM user'
   home node['opendkim']['run_dir']
@@ -36,4 +30,10 @@ group node['opendkim']['group'] do
   members [node['opendkim']['user']]
   system true
   append true
+end
+
+directory node['opendkim']['run_dir'] do
+  owner node['opendkim']['user']
+  group node['opendkim']['group']
+  mode '00755'
 end
