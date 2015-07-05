@@ -234,6 +234,30 @@ This a DNS TXT record example based on the examples above:
 20150512._domainkey.example.com. 21599 IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKB [...]"
 ```
 
+Deploy with Docker
+==================
+
+You can use the *Dockerfile* included in the [cookbook source code](https://github.com/onddo/opendkim-cookbook) to run the cookbook inside a container:
+
+    $ docker build -t chef-opendkim .
+    $ docker run -d -p 8891:8891 chef-opendkim
+
+The sample *Dockerfile*:
+
+```Dockerfile
+FROM zuazo/chef-local:debian-7
+
+COPY . /tmp/opendkim
+RUN berks vendor -b /tmp/opendkim/Berksfile $COOKBOOK_PATH
+RUN chef-client -r "recipe[apt],recipe[opendkim]"
+
+EXPOSE 8891
+
+CMD ["/usr/sbin/opendkim", "-f", "-x", "/etc/opendkim.conf", "-u", "opendkim", "-P", "/var/run/opendkim/opendkim.pid"]
+```
+
+See the [chef-local container documentation](https://registry.hub.docker.com/u/zuazo/chef-local/) for more examples.
+
 ## Testing Your Email DKIM Configuration
 
 You can send an empty email to [check-auth@verifier.port25.com](mailto:check-auth@verifier.port25.com) to check that everything works correctly.
