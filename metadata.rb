@@ -27,7 +27,7 @@ Installs and configures OpenDKIM: Open source implementation of the DKIM (Domain
 Keys Identified Mail) sender authentication system.
 EOH
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.2.0' # WiP
+version '0.2.0'
 
 supports 'amazon'
 supports 'debian'
