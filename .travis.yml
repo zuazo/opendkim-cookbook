@@ -4,14 +4,15 @@ rvm:
 - 2.1
 
 env:
-- CHEF_VERSION="~> 11.0"
-- CHEF_VERSION="~> 12.0"
   global:
   - KITCHEN_LOCAL_YAML=.kitchen.docker.yml
   - "HOST_IP=$(ip addr | awk '/scope global/ {print $2; exit}' | cut -d/ -f1)"
   - DOCKER_HOST=tcp://$HOST_IP:2375
   - DOCKER_PORT_RANGE=2400:2500
   - SLIRP_PORTS=$(seq 2000 2500)
+  matrix:
+  - CHEF_VERSION="~> 11.0"
+  - CHEF_VERSION="~> 12.0"
 
 matrix:
   exclude:
