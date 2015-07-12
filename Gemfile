@@ -29,12 +29,19 @@ group :unit do
 end
 
 group :integration do
-  gem 'vagrant-wrapper', '~> 2.0'
   gem 'test-kitchen', '~> 1.2'
+end
+
+group :integration_docker do
+  gem 'kitchen-docker', '~> 2.1'
+end
+
+group :integration_vagrant do
+  gem 'vagrant-wrapper', '~> 2.0'
   gem 'kitchen-vagrant', '~> 0.10'
 end
 
-group :integration, :integration_cloud do
+group :integration_cloud do
   gem 'kitchen-ec2', '~> 0.8'
   gem 'kitchen-digitalocean', '~> 0.8'
 end

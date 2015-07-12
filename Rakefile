@@ -36,18 +36,30 @@ RSpec::Core::RakeTask.new(:unit) do |t|
   t.rspec_opts = '--color --format progress'
 end
 
-desc 'Run Test Kitchen integration tests'
-task :integration do
-  require 'kitchen'
-  Kitchen.logger = Kitchen.default_file_logger
-  Kitchen::Config.new.instances.each do |instance|
-    instance.test(:always)
+namespace :integration do
+  desc 'Run Test Kitchen integration tests using vagrant'
+  task :vagrant do
+    require 'kitchen'
+    Kitchen.logger = Kitchen.default_file_logger
+    Kitchen::Config.new.instances.each do |instance|
+      instance.test(:always)
+    end
+  end
+
+  desc 'Run Test Kitchen integration tests using docker'
+  task :docker do
+    require 'kitchen'
+    Kitchen.logger = Kitchen.default_file_logger
+    @loader = Kitchen::Loader::YAML.new(local_config: '.kitchen.docker.yml')
+    Kitchen::Config.new(loader: @loader).instances.each do |instance|
+      instance.test(:always)
+    end
   end
 end
 
 namespace :travis do
   desc 'Run tests on Travis'
-  task ci: %w(style unit)
+  task ci: %w(style unit integration:docker)
 end
 
-task default: %w(doc style unit integration)
+task default: %w(doc style unit integration:vagrant)
