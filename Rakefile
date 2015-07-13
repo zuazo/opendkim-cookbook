@@ -28,34 +28,41 @@ namespace :style do
 end
 
 desc 'Run all style checks'
-task style: %w(style:chef style:ruby)
+task :style do
+  next if ENV.key?('SKIP_STYLE_TESTS')
+  task default: %w(style:chef style:ruby)
+end
 
-require 'rspec/core/rake_task'
 desc 'Run ChefSpec unit tests'
-RSpec::Core::RakeTask.new(:unit) do |t|
-  t.rspec_opts = '--color --format progress'
+task :unit do
+  next if ENV.key?('SKIP_UNIT_TESTS')
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:unit) do |t|
+    t.rspec_opts = '--color --format progress'
+  end
 end
 
 namespace :integration do
+  next if ENV.key?('SKIP_INTEGRATION_TESTS')
+
+  def run_kitchen
+    sh "kitchen test #{ENV['KITCHEN_ARGS']} #{ENV['KITCHEN_PLATFORM']}"
+  end
+
   desc 'Run Test Kitchen integration tests using vagrant'
   task :vagrant do
-    require 'kitchen'
-    Kitchen.logger = Kitchen.default_file_logger
-    Kitchen::Config.new.instances.each do |instance|
-      instance.test(:always)
-    end
+    ENV.delete('KITCHEN_LOCAL_YAML')
+    run_kitchen
   end
 
   desc 'Run Test Kitchen integration tests using docker'
   task :docker do
-    require 'kitchen'
-    Kitchen.logger = Kitchen.default_file_logger
-    @loader = Kitchen::Loader::YAML.new(local_config: '.kitchen.docker.yml')
-    Kitchen::Config.new(loader: @loader).instances.each do |instance|
-      instance.test(:always)
-    end
+    ENV['KITCHEN_LOCAL_YAML'] = '.kitchen.docker.yml'
+    run_kitchen
   end
 end
+
+task integration: %w(integration:default)
 
 namespace :travis do
   desc 'Run tests on Travis'
