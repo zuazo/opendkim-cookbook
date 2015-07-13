@@ -7,7 +7,11 @@
 
 require 'bundler/setup'
 
-desc 'Generate Ruby documentation'
+def travis?
+  ENV['TRAVIS'] == 'true'
+end
+
+desc 'Generate Ruby documentation using yard'
 task :yard do
   require 'yard'
   YARD::Rake::YardocTask.new do |t|
@@ -15,27 +19,26 @@ task :yard do
   end
 end
 
+desc 'Generate Ruby documentation'
 task doc: %w(yard)
 
 namespace :style do
   require 'rubocop/rake_task'
-  desc 'Run Ruby style checks'
+  desc 'Run Ruby style checks using rubocop'
   RuboCop::RakeTask.new(:ruby)
 
   require 'foodcritic'
-  desc 'Run Chef style checks'
+  desc 'Run Chef style checks using foodcritic'
   FoodCritic::Rake::LintTask.new(:chef)
 end
 
 desc 'Run all style checks'
 task :style do
-  next if ENV.key?('SKIP_STYLE_TESTS')
   task default: %w(style:chef style:ruby)
 end
 
 desc 'Run ChefSpec unit tests'
 task :unit do
-  next if ENV.key?('SKIP_UNIT_TESTS')
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:unit) do |t|
     t.rspec_opts = '--color --format progress'
@@ -44,27 +47,24 @@ end
 
 namespace :integration do
   def run_kitchen
-    sh "kitchen test #{ENV['KITCHEN_ARGS']} #{ENV['KITCHEN_PLATFORM']}"
+    sh "kitchen test #{ENV['KITCHEN_ARGS']} #{ENV['KITCHEN_REGEXP']}"
   end
 
   desc 'Run Test Kitchen integration tests using vagrant'
   task :vagrant do
-    next if ENV.key?('SKIP_INTEGRATION_TESTS')
     ENV.delete('KITCHEN_LOCAL_YAML')
     run_kitchen
   end
 
   desc 'Run Test Kitchen integration tests using docker'
   task :docker do
-    next if ENV.key?('SKIP_INTEGRATION_TESTS')
     ENV['KITCHEN_LOCAL_YAML'] = '.kitchen.docker.yml'
     run_kitchen
   end
 end
 
-task integration: %w(integration:default)
+desc 'Run Test Kitchen integration tests'
+task integration: travis? ? %w(integration:docker) : %w(integration:vagrant)
 
-desc 'Run tests on Travis'
-task travis: %w(style unit integration:docker)
-
-task default: %w(doc style unit integration:vagrant)
+desc 'Run doc, style, unit and integration tests'
+task default: %w(doc style unit integration)

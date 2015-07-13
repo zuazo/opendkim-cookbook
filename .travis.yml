@@ -12,20 +12,18 @@ env:
   - DOCKER_PORT_RANGE=2400:2500
   - SLIRP_PORTS=$(seq 2000 2500)
   matrix:
-# Run style and unit tests:
-# CHEF_VERSION is only for unit tests, no for test-kitchen.
-  - CHEF_VERSION="~> 11.0" SKIP_INTEGRATION_TESTS=true
-  - CHEF_VERSION="~> 12.0" SKIP_INTEGRATION_TESTS=true
-# Run integration tests:
-# Split up the test-kitchen run to avoid exceeding 50 minutes.
-  - KITCHEN_PLATFORM=centos SKIP_STYLE_TESTS=true SKIP_UNIT_TESTS=true
-  - KITCHEN_PLATFORM=debian SKIP_STYLE_TESTS=true SKIP_UNIT_TESTS=true
-  - KITCHEN_PLATFORM=ubuntu SKIP_STYLE_TESTS=true SKIP_UNIT_TESTS=true
+# CHEF_VERSION is only for unit tests, no for test-kitchen:
+  - TESTS="style unit"  CHEF_VERSION="~> 11.0"
+  - TESTS="style unit"  CHEF_VERSION="~> 12.0"
+# Split up the test-kitchen run to avoid exceeding 50 minutes:
+  - TESTS="integration" KITCHEN_REGEXP=centos
+  - TESTS="integration" KITCHEN_REGEXP=debian
+  - TESTS="integration" KITCHEN_REGEXP=ubuntu
 
 matrix:
   exclude:
   - rvm: 1.9.3
-    env: CHEF_VERSION="~> 12.0" SKIP_INTEGRATION_TESTS=true
+    env: TESTS="style unit"  CHEF_VERSION="~> 12.0"
 
 before_install:
 - sudo sh -c "wget -qO- https://get.docker.io/gpg | apt-key add -"
@@ -45,6 +43,6 @@ before_script:
 bundler_args: --without doc integration_vagrant integration_cloud guard
 
 script:
-  - travis_retry bundle exec rake travis
+  - travis_retry bundle exec rake $TESTS
 
 after_failure: cat docker_daemon.log
