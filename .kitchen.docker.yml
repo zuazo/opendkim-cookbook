@@ -4,7 +4,6 @@ driver:
   use_sudo: false
 
 platforms:
-- name: centos-5
 - name: centos-6
 - name: debian-6
   run_list: recipe[apt]
