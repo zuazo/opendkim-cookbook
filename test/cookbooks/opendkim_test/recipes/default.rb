@@ -98,5 +98,5 @@ node['opendkim']['packages']['tools'].each { |pkg| package pkg }
 
 # Required for kitchen-docker:
 package 'net-tools' do
-  only_if { node['platform_family'] == 'debian' }
+  only_if { %w(debian fedora).include?(node['platform_family']) }
 end
