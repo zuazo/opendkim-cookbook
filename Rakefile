@@ -64,9 +64,7 @@ end
 
 task integration: %w(integration:default)
 
-namespace :travis do
-  desc 'Run tests on Travis'
-  task ci: %w(style unit integration:docker)
-end
+desc 'Run tests on Travis'
+task travis: %w(style unit integration:docker)
 
 task default: %w(doc style unit integration:vagrant)
