@@ -43,20 +43,20 @@ task :unit do
 end
 
 namespace :integration do
-  next if ENV.key?('SKIP_INTEGRATION_TESTS')
-
   def run_kitchen
     sh "kitchen test #{ENV['KITCHEN_ARGS']} #{ENV['KITCHEN_PLATFORM']}"
   end
 
   desc 'Run Test Kitchen integration tests using vagrant'
   task :vagrant do
+    next if ENV.key?('SKIP_INTEGRATION_TESTS')
     ENV.delete('KITCHEN_LOCAL_YAML')
     run_kitchen
   end
 
   desc 'Run Test Kitchen integration tests using docker'
   task :docker do
+    next if ENV.key?('SKIP_INTEGRATION_TESTS')
     ENV['KITCHEN_LOCAL_YAML'] = '.kitchen.docker.yml'
     run_kitchen
   end
