@@ -7,6 +7,11 @@
 
 require 'bundler/setup'
 
+# Checks if we are inside Travis CI.
+#
+# @return [Boolean] whether we are inside Travis CI.
+# @example
+#   travis? #=> false
 def travis?
   ENV['TRAVIS'] == 'true'
 end
