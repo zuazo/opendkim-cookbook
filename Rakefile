@@ -38,9 +38,7 @@ namespace :style do
 end
 
 desc 'Run all style checks'
-task :style do
-  task default: %w(style:chef style:ruby)
-end
+task style: %w(style:chef style:ruby)
 
 desc 'Run ChefSpec unit tests'
 task :unit do
