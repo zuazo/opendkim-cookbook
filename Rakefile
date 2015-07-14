@@ -66,6 +66,12 @@ namespace :integration do
     ENV['KITCHEN_LOCAL_YAML'] = '.kitchen.docker.yml'
     run_kitchen
   end
+
+  desc 'Run Test Kitchen integration tests in the cloud'
+  task :cloud do
+    ENV['KITCHEN_LOCAL_YAML'] = '.kitchen.cloud.yml'
+    run_kitchen
+  end
 end
 
 desc 'Run Test Kitchen integration tests'

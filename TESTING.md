@@ -83,8 +83,6 @@ You can run the tests in the cloud instead of using vagrant. First, you must set
 * `DIGITALOCEAN_SSH_KEY_IDS`: DigitalOcean SSH numeric key IDs.
 * `DIGITALOCEAN_SSH_KEY_PATH`: DigitalOcean SSH private key local full path. Only when you are not using an SSH Agent.
 
-Then, you must configure test-kitchen to use `.kitchen.cloud.yml` configuration file:
+Then use the `integration:cloud` rake task to run the tests:
 
-    $ export KITCHEN_LOCAL_YAML=".kitchen.cloud.yml"
-    $ bundle exec kitchen list
-    [...]
+    $ bundle exec rake integration:cloud
