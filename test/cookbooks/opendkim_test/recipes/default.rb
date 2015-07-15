@@ -94,9 +94,5 @@ end
 
 # Required for integration tests:
 package 'lsof'
+include_recipe 'netstat'
 node['opendkim']['packages']['tools'].each { |pkg| package pkg }
-
-# Required for kitchen-docker:
-package 'net-tools' do
-  only_if { %w(debian fedora rhel).include?(node['platform_family']) }
-end
