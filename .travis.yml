@@ -29,23 +29,23 @@ matrix:
     env: TESTS="style unit"  CHEF_VERSION="~> 11.0"
 # Disable integration tests in old Ruby versions:
   - rvm: 1.9.3
-    env: TESTS="integration" KITCHEN_REGEXP=default
+    env: TESTS="integration" KITCHEN_REGEXP=centos
   - rvm: 2.0.0
-    env: TESTS="integration" KITCHEN_REGEXP=default
+    env: TESTS="integration" KITCHEN_REGEXP=centos
   - rvm: 2.1
-    env: TESTS="integration" KITCHEN_REGEXP=default
+    env: TESTS="integration" KITCHEN_REGEXP=centos
   - rvm: 1.9.3
-    env: TESTS="integration" KITCHEN_REGEXP=ldap-debian
+    env: TESTS="integration" KITCHEN_REGEXP=debian
   - rvm: 2.0.0
-    env: TESTS="integration" KITCHEN_REGEXP=ldap-debian
+    env: TESTS="integration" KITCHEN_REGEXP=debian
   - rvm: 2.1
-    env: TESTS="integration" KITCHEN_REGEXP=ldap-debian
+    env: TESTS="integration" KITCHEN_REGEXP=debian
   - rvm: 1.9.3
-    env: TESTS="integration" KITCHEN_REGEXP=attributes
+    env: TESTS="integration" KITCHEN_REGEXP=ubuntu
   - rvm: 2.0.0
-    env: TESTS="integration" KITCHEN_REGEXP=attributes
+    env: TESTS="integration" KITCHEN_REGEXP=ubuntu
   - rvm: 2.1
-    env: TESTS="integration" KITCHEN_REGEXP=attributes
+    env: TESTS="integration" KITCHEN_REGEXP=ubuntu
 
 bundler_args: --without doc integration_vagrant integration_cloud guard
 
