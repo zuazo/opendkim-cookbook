@@ -20,7 +20,7 @@
 require 'spec_helper'
 
 describe 'opendkim::_configuration', order: :random do
-  let(:chef_runner) { ChefSpec::ServerRunner.new }
+  let(:chef_runner) { ChefSpec::SoloRunner.new }
   let(:chef_run) { chef_runner.converge('opendkim::default') }
   let(:conf_file) { '/etc/opendkim.conf' }
 
@@ -42,7 +42,7 @@ describe 'opendkim::_configuration', order: :random do
   context 'on FreeBSD' do
     let(:conf_file) { '/usr/local/etc/mail/opendkim.conf' }
     let(:chef_runner) do
-      ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.0')
+      ChefSpec::SoloRunner.new(platform: 'freebsd', version: '10.0')
     end
 
     it 'creates opendkim.conf template' do

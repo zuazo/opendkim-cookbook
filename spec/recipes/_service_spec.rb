@@ -34,7 +34,7 @@ describe 'opendkim::_service', order: :random do
     name, version = platform.split('@', 2)
     context "on #{name} #{version}" do
       let(:chef_runner) do
-        ChefSpec::ServerRunner.new(platform: name.downcase, version: version)
+        ChefSpec::SoloRunner.new(platform: name.downcase, version: version)
       end
 
       it 'enables opendkim service' do
