@@ -52,15 +52,4 @@ describe 'opendkim::_service', order: :random do
       end
     end # context on name version
   end # each platform
-
-  xcontext 'on Ubuntu 15.04' do
-    let(:chef_runner) do
-      ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '15.04')
-    end
-
-    it 'uses the upstart provider' do
-      expect(chef_run).to enable_service('opendkim')
-        .with_provider(Chef::Provider::Service::Debian)
-    end
-  end # context on Ubuntu 15.04
 end
