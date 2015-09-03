@@ -17,19 +17,20 @@
 # limitations under the License.
 #
 
-if ENV['TRAVIS']
-  require 'coveralls'
-  Coveralls.wear!
-else
-  require 'simplecov'
-  SimpleCov.start do
-    add_group 'Libraries', '/libraries'
-    add_group 'ChefSpec' do |src|
-      %r{/spec/(recipes|resources|providers)}.match(src.filename)
+require_relative '../spec_helper'
+
+describe 'opendkim::default', order: :random do
+  let(:chef_runner) { ChefSpec::SoloRunner.new }
+  let(:chef_run) { chef_runner.converge(described_recipe) }
+
+  %w(
+    user
+    from_package
+    configuration
+    service
+  ).each do |local_recipe|
+    it "includes opendkim::_#{local_recipe} recipe" do
+      expect(chef_run).to include_recipe("opendkim::_#{local_recipe}")
     end
-    add_group 'RSpec' do |src|
-      %r{/spec/(unit|functional|integration|libraries)}.match(src.filename)
-    end
-    add_group 'RSpec Support', '/spec/support'
-  end
+  end # each local_recipe
 end

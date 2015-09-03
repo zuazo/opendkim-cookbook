@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
+require_relative '../spec_helper'
 require 'template_helpers.rb'
 
 describe OpendkimCookbook::TemplateHelpers, order: :random do

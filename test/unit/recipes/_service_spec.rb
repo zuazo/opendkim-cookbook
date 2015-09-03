@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
+require_relative '../spec_helper'
 
 describe 'opendkim::_service', order: :random do
   let(:chef_run) { chef_runner.converge(described_recipe) }
