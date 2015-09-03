@@ -18,6 +18,8 @@ env:
   - TESTS="integration" KITCHEN_REGEXP=centos
   - TESTS="integration" KITCHEN_REGEXP=debian
   - TESTS="integration" KITCHEN_REGEXP=ubuntu
+  - TESTS="integration" KITCHEN_REGEXP=oraclelinux
+  - TESTS="integration" KITCHEN_REGEXP=scientific
 
 matrix:
   exclude:
@@ -46,6 +48,18 @@ matrix:
     env: TESTS="integration" KITCHEN_REGEXP=ubuntu
   - rvm: 2.1
     env: TESTS="integration" KITCHEN_REGEXP=ubuntu
+  - rvm: 1.9.3
+    env: TESTS="integration" KITCHEN_REGEXP=oraclelinux
+  - rvm: 2.0.0
+    env: TESTS="integration" KITCHEN_REGEXP=oraclelinux
+  - rvm: 2.1
+    env: TESTS="integration" KITCHEN_REGEXP=oraclelinux
+  - rvm: 1.9.3
+    env: TESTS="integration" KITCHEN_REGEXP=scientific
+  - rvm: 2.0.0
+    env: TESTS="integration" KITCHEN_REGEXP=scientific
+  - rvm: 2.1
+    env: TESTS="integration" KITCHEN_REGEXP=scientific
 
 bundler_args: --without doc integration_vagrant integration_cloud guard
 

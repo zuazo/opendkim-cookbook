@@ -10,13 +10,16 @@ platforms:
   run_list: recipe[apt]
 - name: debian-7
   run_list: recipe[apt]
+- name: oraclelinux-6
+  driver_config:
+    platform: rhel
 - name: ubuntu-10.04
   run_list: recipe[apt]
 - name: ubuntu-12.04
   run_list: recipe[apt]
 - name: ubuntu-14.04
   run_list: recipe[apt]
-- name: ubuntu-14.10
+- name: ubuntu-15.04
   run_list: recipe[apt]
 
 # Non-official images with systemd
@@ -25,3 +28,7 @@ platforms:
     # https://registry.hub.docker.com/u/milcom/centos7-systemd/dockerfile/
     image: milcom/centos7-systemd
     privileged: true
+- name: scientific-6.6
+  driver_config:
+    image: ringo/scientific:6.6
+    platform: rhel
