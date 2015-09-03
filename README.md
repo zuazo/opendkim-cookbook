@@ -1,11 +1,11 @@
 OpenDKIM Cookbook
 =================
 [![Cookbook Version](https://img.shields.io/cookbook/v/opendkim.svg?style=flat)](https://supermarket.chef.io/cookbooks/opendkim)
-[![Dependency Status](http://img.shields.io/gemnasium/onddo/opendkim-cookbook.svg?style=flat)](https://gemnasium.com/onddo/opendkim-cookbook)
-[![Code Climate](http://img.shields.io/codeclimate/github/onddo/opendkim-cookbook.svg?style=flat)](https://codeclimate.com/github/onddo/opendkim-cookbook)
-[![Build Status](http://img.shields.io/travis/onddo/opendkim-cookbook.svg?style=flat)](https://travis-ci.org/onddo/opendkim-cookbook)
-[![Coverage Status](http://img.shields.io/coveralls/onddo/opendkim-cookbook.svg?style=flat)](https://coveralls.io/r/onddo/opendkim-cookbook?branch=master)
-[![Inline docs](http://inch-ci.org/github/onddo/opendkim-cookbook.svg?branch=master&style=flat)](http://inch-ci.org/github/onddo/opendkim-cookbook)
+[![Dependency Status](http://img.shields.io/gemnasium/zuazo/opendkim-cookbook.svg?style=flat)](https://gemnasium.com/zuazo/opendkim-cookbook)
+[![Code Climate](http://img.shields.io/codeclimate/github/zuazo/opendkim-cookbook.svg?style=flat)](https://codeclimate.com/github/zuazo/opendkim-cookbook)
+[![Build Status](http://img.shields.io/travis/zuazo/opendkim-cookbook.svg?style=flat)](https://travis-ci.org/zuazo/opendkim-cookbook)
+[![Coverage Status](http://img.shields.io/coveralls/zuazo/opendkim-cookbook.svg?style=flat)](https://coveralls.io/r/zuazo/opendkim-cookbook?branch=master)
+[![Inline docs](http://inch-ci.org/github/zuazo/opendkim-cookbook.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/opendkim-cookbook)
 
 Installs and configures [OpenDKIM](http://www.opendkim.org/): Open source implementation of the DKIM (Domain Keys Identified Mail) sender authentication system.
 
@@ -24,7 +24,7 @@ This cookbook has been tested on the following platforms:
 * RedHat
 * Ubuntu
 
-Please, [let us know](https://github.com/onddo/opendkim-cookbook/issues/new?title=I%20have%20used%20it%20successfully%20on%20...) if you use it successfully on any other platform.
+Please, [let us know](https://github.com/zuazo/opendkim-cookbook/issues/new?title=I%20have%20used%20it%20successfully%20on%20...) if you use it successfully on any other platform.
 
 ## Required Cookbooks
 
@@ -237,7 +237,7 @@ This a DNS TXT record example based on the examples above:
 Deploy with Docker
 ==================
 
-You can use the *Dockerfile* included in the [cookbook source code](https://github.com/onddo/opendkim-cookbook) to run the cookbook inside a container:
+You can use the *Dockerfile* included in the [cookbook source code](https://github.com/zuazo/opendkim-cookbook) to run the cookbook inside a container:
 
     $ docker build -t chef-opendkim .
     $ docker run -d -p 8891:8891 chef-opendkim
@@ -265,19 +265,19 @@ You can send an empty email to [check-auth@verifier.port25.com](mailto:check-aut
 Testing
 =======
 
-See [TESTING.md](https://github.com/onddo/opendkim-cookbook/blob/master/TESTING.md).
+See [TESTING.md](https://github.com/zuazo/opendkim-cookbook/blob/master/TESTING.md).
 
 Contributing
 ============
 
-Please do not hesitate to [open an issue](https://github.com/onddo/opendkim-cookbook/issues/new) with any questions or problems.
+Please do not hesitate to [open an issue](https://github.com/zuazo/opendkim-cookbook/issues/new) with any questions or problems.
 
-See [CONTRIBUTING.md](https://github.com/onddo/opendkim-cookbook/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/zuazo/opendkim-cookbook/blob/master/CONTRIBUTING.md).
 
 TODO
 ====
 
-See [TODO.md](https://github.com/onddo/opendkim-cookbook/blob/master/TODO.md).
+See [TODO.md](https://github.com/zuazo/opendkim-cookbook/blob/master/TODO.md).
 
 
 License and Author
@@ -286,9 +286,10 @@ License and Author
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | [Raul Rodriguez](https://github.com/raulr) (<raul@onddo.com>)
-| **Author:**          | [Xabier de Zuazo](https://github.com/zuazo) (<xabier@onddo.com>)
+| **Author:**          | [Xabier de Zuazo](https://github.com/zuazo) (<xabier@zuazo.org>)
 | **Contributor:**     | [Michael Burns](https://github.com/mburns)
-| **Copyright:**       | Copyright (c) 2015, Onddo Labs, SL. (www.onddo.com)
+| **Copyright:**       | Copyright (c) 2015, Xabier de Zuazo
+| **Copyright:**       | Copyright (c) 2015, Onddo Labs, SL.
 | **License:**         | Apache License, Version 2.0
 
     Licensed under the Apache License, Version 2.0 (the "License");

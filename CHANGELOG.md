@@ -5,7 +5,7 @@ This file is used to list changes made in each version of the `opendkim` cookboo
 
 ## v0.2.0 (2015-07-06)
 
-* Create user and group before a directory owned by them ([issue #1](https://github.com/onddo/opendkim-cookbook/pull/1), thanks [Michael Burns](https://github.com/mburns)).
+* Create user and group before a directory owned by them ([issue #1](https://github.com/zuazo/opendkim-cookbook/pull/1), thanks [Michael Burns](https://github.com/mburns)).
 * Document attributes in the metadata.
 * README: Fix and improve some examples.
 * Add a Dockerfile.
