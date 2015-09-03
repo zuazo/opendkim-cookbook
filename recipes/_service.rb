@@ -20,6 +20,11 @@
 #
 
 service node['opendkim']['service']['name'] do
+  if node['platform'] == 'ubuntu' &&
+     Gem::Version.new(node['platform_version']) >= Gem::Version.new('15.04')
+    provider Chef::Provider::Service::Debian
+  end
+  action [:enable, :start]
   supports node['opendkim']['service']['supports'].dup
   action [:enable, :start]
 end
