@@ -3,8 +3,8 @@ OpenDKIM Cookbook
 [![Cookbook Version](https://img.shields.io/cookbook/v/opendkim.svg?style=flat)](https://supermarket.chef.io/cookbooks/opendkim)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/opendkim-cookbook.svg?style=flat)](https://gemnasium.com/zuazo/opendkim-cookbook)
 [![Code Climate](http://img.shields.io/codeclimate/github/zuazo/opendkim-cookbook.svg?style=flat)](https://codeclimate.com/github/zuazo/opendkim-cookbook)
-[![Build Status](http://img.shields.io/travis/zuazo/opendkim-cookbook.svg?style=flat)](https://travis-ci.org/zuazo/opendkim-cookbook)
-[![Coverage Status](http://img.shields.io/coveralls/zuazo/opendkim-cookbook.svg?style=flat)](https://coveralls.io/r/zuazo/opendkim-cookbook?branch=master)
+[![Build Status](http://img.shields.io/travis/zuazo/opendkim-cookbook/1.0.0.svg?style=flat)](https://travis-ci.org/zuazo/opendkim-cookbook)
+[![Coverage Status](http://img.shields.io/coveralls/zuazo/opendkim-cookbook/1.0.0.svg?style=flat)](https://coveralls.io/r/zuazo/opendkim-cookbook?branch=1.0.0)
 [![Inline docs](http://inch-ci.org/github/zuazo/opendkim-cookbook.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/opendkim-cookbook)
 
 Installs and configures [OpenDKIM](http://www.opendkim.org/): Open source implementation of the DKIM (Domain Keys Identified Mail) sender authentication system.
