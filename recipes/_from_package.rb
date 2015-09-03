@@ -19,6 +19,6 @@
 # limitations under the License.
 #
 
-include_recipe 'yum-epel' if node['opendkim']['require_yum_epel']
+include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
 
 node['opendkim']['packages']['service'].each { |pkg| package pkg }

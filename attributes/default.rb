@@ -19,58 +19,53 @@
 # limitations under the License.
 #
 
-case node['platform']
-when 'redhat', 'centos', 'scientific', 'amazon'
+case node['platform_family']
+when 'rhel'
   default['opendkim']['conf_file'] = '/etc/opendkim.conf'
-  default['opendkim']['require_yum_epel'] = true
   default['opendkim']['service']['name'] = 'opendkim'
   default['opendkim']['service']['supports'] =
     { restart: true, reload: true, status: true }
   default['opendkim']['packages']['tools'] = []
 when 'fedora'
   default['opendkim']['conf_file'] = '/etc/opendkim.conf'
-  default['opendkim']['require_yum_epel'] = false
   default['opendkim']['service']['name'] = 'opendkim'
   default['opendkim']['service']['supports'] =
     { restart: true, reload: true, status: true }
   default['opendkim']['packages']['tools'] = []
 when 'debian'
   default['opendkim']['conf_file'] = '/etc/opendkim.conf'
-  default['opendkim']['require_yum_epel'] = false
   default['opendkim']['service']['name'] = 'opendkim'
-  if node['platform_version'].to_i < 7
-    default['opendkim']['service']['supports'] =
-      { restart: true, reload: true, status: false }
-    default['opendkim']['packages']['tools'] = []
-  else
-    default['opendkim']['service']['supports'] =
-      { restart: true, reload: true, status: true }
-    default['opendkim']['packages']['tools'] = %w(opendkim-tools)
-  end
-when 'ubuntu'
-  default['opendkim']['conf_file'] = '/etc/opendkim.conf'
-  default['opendkim']['require_yum_epel'] = false
-  default['opendkim']['service']['name'] = 'opendkim'
-  if node['platform_version'].to_i < 12
-    default['opendkim']['service']['supports'] =
-      { restart: true, reload: true, status: false }
-    default['opendkim']['packages']['tools'] = []
-  else
-    default['opendkim']['service']['supports'] =
-      { restart: true, reload: true, status: true }
-    default['opendkim']['packages']['tools'] = %w(opendkim-tools)
+  case node['platform']
+  when 'debian', 'raspbian'
+    if node['platform_version'].to_i < 7
+      default['opendkim']['service']['supports'] =
+        { restart: true, reload: true, status: false }
+      default['opendkim']['packages']['tools'] = []
+    else
+      default['opendkim']['service']['supports'] =
+        { restart: true, reload: true, status: true }
+      default['opendkim']['packages']['tools'] = %w(opendkim-tools)
+    end
+  when 'ubuntu'
+    if node['platform_version'].to_i < 12
+      default['opendkim']['service']['supports'] =
+        { restart: true, reload: true, status: false }
+      default['opendkim']['packages']['tools'] = []
+    else
+      default['opendkim']['service']['supports'] =
+        { restart: true, reload: true, status: true }
+      default['opendkim']['packages']['tools'] = %w(opendkim-tools)
+    end
   end
 when 'openbsd', 'freebsd', 'mac_os_x'
   default['opendkim']['conf_file'] = '/usr/local/etc/mail/opendkim.conf'
   default['opendkim']['packages']['tools'] = []
-  default['opendkim']['require_yum_epel'] = false
   default['opendkim']['service']['name'] = 'milter-opendkim'
   default['opendkim']['service']['supports'] =
     { restart: true, reload: true, status: true }
 else
   default['opendkim']['conf_file'] = '/etc/opendkim.conf'
   default['opendkim']['packages']['tools'] = %w(opendkim-tools)
-  default['opendkim']['require_yum_epel'] = false
   default['opendkim']['service']['name'] = 'opendkim'
   default['opendkim']['service']['supports'] =
     { restart: true, reload: true, status: true }

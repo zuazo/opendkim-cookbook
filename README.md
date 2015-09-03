@@ -48,7 +48,6 @@ Some cookbook attributes are used internally to support the different platforms.
 | Attribute                                 | Default               | Description                       |
 |-------------------------------------------|:---------------------:|-----------------------------------|
 | `node['opendkim']['conf_file']`           | *calculated*          | OpenDKIM Configuration file path.
-| `node['opendkim']['require_yum_epel']`    | *calculated*          | Whether to include `yum-epel` recipe.
 | `node['opendkim']['service']['name']`     | *calculated*          | OpenDKIM system service name.
 | `node['opendkim']['service']['supports']` | *calculated*          | OpenDKIM service supported actions.
 | `node['opendkim']['packages']['tools']`   | *calculated*          | OpenDKIM tools package name as array (currently unused).
