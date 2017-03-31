@@ -35,7 +35,8 @@ Please, [let us know](https://github.com/zuazo/opendkim-cookbook/issues/new?titl
 
 ## Required Applications
 
-* Ruby `1.9.3` or higher.
+* Chef `12` or higher.
+* Ruby `2.2` or higher.
 
 Attributes
 ==========
