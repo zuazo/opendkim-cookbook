@@ -3,6 +3,9 @@ All notable changes to the `opendkim` cookbook will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+- ...
+
 ## [2.0.0] - 2017-03-31
 ### Added in 2.0.0
 - Chef `13` support.
