@@ -1,5 +1,4 @@
 AllCops:
   Exclude:
-  - '.kitchen'
-  Include:
-  - '**/*.rb.erb'
+  - .kitchen
+  - vendor/**/*
