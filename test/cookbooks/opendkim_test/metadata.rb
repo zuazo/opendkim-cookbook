@@ -1,5 +1,3 @@
-# encoding: UTF-8
-#
 # Cookbook Name:: opendkim
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
 # Copyright:: Copyright (c) 2015 Onddo Labs, SL.
@@ -23,7 +21,7 @@ maintainer 'Xabier de Zuazo'
 maintainer_email 'xabier@zuazo.org'
 license 'Apache 2.0'
 description <<-EOH
-This cookbook is used with test-kitchen to test the parent, opendkim cookbook.
+  This cookbook is used with test-kitchen to test the parent, opendkim cookbook.
 EOH
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.1.0'

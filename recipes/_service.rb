@@ -1,5 +1,3 @@
-# encoding: UTF-8
-#
 # Cookbook Name:: opendkim
 # Recipe:: _service
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
@@ -24,7 +22,6 @@ service node['opendkim']['service']['name'] do
      Gem::Version.new(node['platform_version']) >= Gem::Version.new('15.04')
     provider Chef::Provider::Service::Debian
   end
-  action [:enable, :start]
+  action %i(enable start)
   supports node['opendkim']['service']['supports'].dup
-  action [:enable, :start]
 end

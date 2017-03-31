@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Improved
 - README: Add doc and license badges.
 - Improve TESTING documentation.
+- Update RuboCop to `0.48`.
 
 ## [1.0.0] - 2015-09-03
 ### Addeed in 1.0.0

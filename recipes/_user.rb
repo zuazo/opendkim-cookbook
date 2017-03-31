@@ -1,5 +1,3 @@
-# encoding: UTF-8
-#
 # Cookbook Name:: opendkim
 # Recipe:: _user
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)

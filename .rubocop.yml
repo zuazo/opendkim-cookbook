@@ -2,3 +2,20 @@ AllCops:
   Exclude:
   - .kitchen
   - vendor/**/*
+  Include:
+  - files/*/*.rb
+  - '**/*.rb.erb'
+Metrics/BlockLength:
+  Exclude:
+  - test/unit/**/*_spec.rb
+  - test/integration/**/*_spec.rb
+  - Guardfile
+  - Rakefile
+  - Vagrantfile
+Style/FileName:
+  Exclude:
+  - Berksfile
+  - '**/Gemfile'
+  - Guardfile
+  - Rakefile
+  - Vagrantfile

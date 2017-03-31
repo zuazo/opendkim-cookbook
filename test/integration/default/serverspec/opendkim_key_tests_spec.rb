@@ -1,5 +1,3 @@
-# encoding: UTF-8
-#
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
 # Copyright:: Copyright (c) 2015 Onddo Labs, SL.
 # License:: Apache License, Version 2.0
@@ -29,12 +27,12 @@ opendkim_testmsg =
   end
 
 dkim_test_message = <<-EOH
-Date: Wed, 29 Jan 2015 10:15:11 +0000 (UTC)
-From: Bob <bob@example.com>
-To: Alice <alice@example.com>
-Subject: Testing DKIM
+  Date: Wed, 29 Jan 2015 10:15:11 +0000 (UTC)
+  From: Bob <bob@example.com>
+  To: Alice <alice@example.com>
+  Subject: Testing DKIM
 
-Testing DKIM body message.
+  Testing DKIM body message.
 EOH
 
 dkim_test_command =

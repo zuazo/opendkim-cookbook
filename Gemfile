@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -16,20 +15,20 @@ group :doc do
 end
 
 group :test do
-  gem 'rake'
   gem 'berkshelf', '~> 5.1'
+  gem 'rake', '~> 12.0'
 end
 
 group :style do
   gem 'foodcritic', '~> 10.0.0'
-  gem 'rubocop', '~> 0.39.0'
+  gem 'rubocop', '~> 0.48.0'
 end
 
 group :unit do
   gem 'chef', chef_version unless chef_version.nil?
   gem 'chefspec', '~> 6.0'
-  gem 'simplecov', '~> 0.13.0'
   gem 'should_not', '~> 1.1'
+  gem 'simplecov', '~> 0.13.0'
 end
 
 group :integration do
@@ -41,22 +40,22 @@ group :integration_docker do
 end
 
 group :integration_vagrant do
-  gem 'vagrant-wrapper', '~> 2.0'
   gem 'kitchen-vagrant', '~> 1.0'
+  gem 'vagrant-wrapper', '~> 2.0'
 end
 
 group :integration_cloud do
-  gem 'kitchen-ec2', '~> 1.2'
   gem 'kitchen-digitalocean', '~> 0.9.5'
+  gem 'kitchen-ec2', '~> 1.2'
 end
 
 group :guard do
   gem 'guard', '~> 2.14'
   gem 'guard-foodcritic', '~> 3.0'
-  gem 'guard-rubocop', '~> 1.1'
-  gem 'guard-rspec', '~> 4.3'
   # Temporary disabled: Error is: cannot load such file -- guard/kitchen
   # gem 'guard-kitchen', '~> 0.0.0'
+  gem 'guard-rspec', '~> 4.3'
+  gem 'guard-rubocop', '~> 1.1'
 end
 
 group :travis do

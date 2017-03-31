@@ -1,5 +1,3 @@
-# encoding: UTF-8
-#
 # Cookbook Name:: opendkim
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
 # Copyright:: Copyright (c) 2015 Onddo Labs, SL.
@@ -23,8 +21,8 @@ maintainer 'Xabier de Zuazo'
 maintainer_email 'xabier@zuazo.org'
 license 'Apache 2.0'
 description <<-EOH
-Installs and configures OpenDKIM: Open source implementation of the DKIM (Domain
-Keys Identified Mail) sender authentication system.
+  Installs and configures OpenDKIM: Open source implementation of the DKIM
+  (Domain Keys Identified Mail) sender authentication system.
 EOH
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '2.0.0' # WiP
