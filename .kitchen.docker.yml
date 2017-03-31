@@ -35,7 +35,7 @@ platforms:
 - name: ubuntu-16.10
   run_list: recipe[apt]
 
-# Non-official images with systemd
+# Non-official images:
 - name: scientific-6.8
   driver_config:
     image: ringo/scientific:6.8
