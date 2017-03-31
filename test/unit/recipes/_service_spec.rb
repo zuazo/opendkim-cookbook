@@ -24,12 +24,10 @@ describe 'opendkim::_service', order: :random do
 
   {
     'CentOS@6.6'   => { status: true,  service: 'opendkim'         },
-    'Fedora@20'    => { status: true,  service: 'opendkim'         },
-    'Debian@6.0.5' => { status: false, service: 'opendkim'         },
+    'Fedora@25'    => { status: true,  service: 'opendkim'         },
     'Debian@7.8'   => { status: true,  service: 'opendkim'         },
-    'Ubuntu@10.04' => { status: false, service: 'opendkim'         },
     'Ubuntu@12.04' => { status: true,  service: 'opendkim'         },
-    'FreeBSD@10.0' => { status: true,  service: 'milter-opendkim'  }
+    'FreeBSD@11.0' => { status: true,  service: 'milter-opendkim'  }
   }.each do |platform, info|
     name, version = platform.split('@', 2)
     context "on #{name} #{version}" do

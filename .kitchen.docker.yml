@@ -5,30 +5,48 @@ driver:
 
 # If you add new platforms below, include them in the .travis.yml file matrix
 platforms:
+- name: centos-5
 - name: centos-6
-- name: debian-6
-  run_list: recipe[apt]
+- name: centos-7
+  driver_config:
+    privileged: true
+    run_command: /sbin/init
 - name: debian-7
   run_list: recipe[apt]
+- name: debian-8
+  run_list: recipe[apt]
+- name: fedora-24
+  driver_config:
+    privileged: true
+    run_command: /sbin/init
+- name: fedora-25
+  driver_config:
+    privileged: true
+    run_command: /sbin/init
 - name: oraclelinux-6
   driver_config:
     platform: rhel
-- name: ubuntu-10.04
-  run_list: recipe[apt]
 - name: ubuntu-12.04
   run_list: recipe[apt]
 - name: ubuntu-14.04
   run_list: recipe[apt]
-- name: ubuntu-15.04
+- name: ubuntu-16.04
+  run_list: recipe[apt]
+- name: ubuntu-16.10
   run_list: recipe[apt]
 
 # Non-official images with systemd
-- name: centos-7
+# - name: centos-7
+#   driver_config:
+#     # https://registry.hub.docker.com/u/milcom/centos7-systemd/dockerfile/
+#     image: milcom/centos7-systemd
+#     privileged: true
+- name: scientific-6.8
   driver_config:
-    # https://registry.hub.docker.com/u/milcom/centos7-systemd/dockerfile/
-    image: milcom/centos7-systemd
-    privileged: true
-- name: scientific-6.6
-  driver_config:
-    image: ringo/scientific:6.6
+    image: ringo/scientific:6.8
     platform: rhel
+- name: scientific-7.2
+  driver_config:
+    image: ringo/scientific:7.2
+    platform: rhel
+

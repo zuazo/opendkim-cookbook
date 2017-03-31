@@ -38,7 +38,7 @@ describe 'opendkim::_from_package', order: :random do
 
   context 'on Fedora' do
     let(:chef_runner) do
-      ChefSpec::SoloRunner.new(platform: 'fedora', version: '20')
+      ChefSpec::SoloRunner.new(platform: 'fedora', version: '24')
     end
 
     it 'does not include yum-epel recipe' do
@@ -80,7 +80,7 @@ describe 'opendkim::_from_package', order: :random do
 
   context 'on FreeBSD' do
     let(:chef_runner) do
-      ChefSpec::SoloRunner.new(platform: 'freebsd', version: '10.0')
+      ChefSpec::SoloRunner.new(platform: 'freebsd', version: '11.0')
     end
 
     it 'does not include yum-epel recipe' do

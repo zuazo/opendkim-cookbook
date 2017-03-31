@@ -94,5 +94,7 @@ end
 
 # Required for integration tests:
 package 'lsof'
+package 'iproute' # ss
+package 'procps-ng' if %w(fedora).include?(node['platform_family']) # ps
 include_recipe 'netstat'
 node['opendkim']['packages']['tools'].each { |pkg| package pkg }
