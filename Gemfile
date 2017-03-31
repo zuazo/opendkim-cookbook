@@ -20,7 +20,7 @@ group :test do
 end
 
 group :style do
-  gem 'foodcritic', '~> 10.0.0'
+  gem 'foodcritic', '~> 10.2.0'
   gem 'rubocop', '~> 0.48.0'
 end
 
@@ -28,7 +28,7 @@ group :unit do
   gem 'chef', chef_version unless chef_version.nil?
   gem 'chefspec', '~> 6.0'
   gem 'should_not', '~> 1.1'
-  gem 'simplecov', '~> 0.13.0'
+  gem 'simplecov', '~> 0.14.0'
 end
 
 group :integration do
