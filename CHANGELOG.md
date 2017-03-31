@@ -1,31 +1,49 @@
-opendkim CHANGELOG
-==================
+# Change Log
+All notable changes to the `opendkim` cookbook will be documented in this file.
 
-This file is used to list changes made in each version of the `opendkim` cookbook.
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v1.0.0 (2015-09-03)
+## [Unreleased]
+### Added
+- metadata: Add `chef_version`.
+- README: Add GitHub badge.
 
-* Fix Ubuntu `15.04` support.
-* Add Oracle Linux and Scientific Linux support.
-* Improve platforms support using `node['platform_family']` node attribute.
-* metadata: Add `source_url` and `issues_url` links.
-* Update contact information and links after migration.
+### Changed
+- CHANGELOG: Follow "Keep a CHANGELOG".
 
-* Testing:
- * Integrate Travis CI with kitchen-docker using `kitchen-in-travis`.
- * Use `SoloRunner` to run ChefSpec tests faster.
- * Gemfile: Update RuboCop to `0.33.0`.
- * Add Vagrantfile.
- * Move ChefSpec tests to *test/unit*.
+### Removed
+- Drop Chef `< 12` and Ruby `< 2.2` support.
 
-## v0.2.0 (2015-07-06)
+### Improved
+- README: Add doc and license badges.
+- Improve TESTING documentation.
 
-* Create user and group before a directory owned by them ([issue #1](https://github.com/zuazo/opendkim-cookbook/pull/1), thanks [Michael Burns](https://github.com/mburns)).
-* Document attributes in the metadata.
-* README: Fix and improve some examples.
-* Add a Dockerfile.
-* Gemfile: Update RuboCop to `0.32.1`.
+## [1.0.0] - 2015-09-03
+### Addeed in 1.0.0
+- Add Oracle Linux and Scientific Linux support.
+- metadata: Add `source_url` and `issues_url` links.
 
-## v0.1.0 (2015-05-21)
+### Fixed in 1.0.0
+- Fix Ubuntu `15.04` support.
 
-* Initial release of `opendkim`.
+### Changed in 1.0.0
+- Update contact information and links after migration.
+
+### Improved in 1.0.0
+- Improve platforms support using `node['platform_family']` node attribute.
+- Gemfile: Update RuboCop to `0.33.0`.
+
+## [0.2.0] - 2015-07-06
+### Added in 0.2.0
+- Create user and group before a directory owned by them ([issue #1](https://github.com/zuazo/opendkim-cookbook/pull/1), thanks [Michael Burns](https://github.com/mburns)).
+
+### Improved in 0.2.0
+- README: Fix and improve some examples.
+- Update RuboCop to `0.32.1`.
+
+## 0.1.0 - 2015-05-21
+- Initial release of `opendkim`.
+
+[Unreleased]: https://github.com/zuazo/opendkim-cookbook/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/zuazo/opendkim-cookbook/compare/0.2.0...1.0.0
+[0.2.0]: https://github.com/zuazo/opendkim-cookbook/compare/0.1.0...0.2.0
