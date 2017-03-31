@@ -1,7 +1,10 @@
 OpenDKIM Cookbook
 =================
+[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg?style=flat)](http://www.rubydoc.info/github/zuazo/opendkim-cookbook)
+[![GitHub](http://img.shields.io/badge/github-zuazo/opendkim--cookbook-blue.svg?style=flat)](https://github.com/zuazo/opendkim-cookbook)
+[![License](https://img.shields.io/github/license/zuazo/opendkim-cookbook.svg?style=flat)](#license-and-author)
+
 [![Cookbook Version](https://img.shields.io/cookbook/v/opendkim.svg?style=flat)](https://supermarket.chef.io/cookbooks/opendkim)
-[![GitHub Source](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/zuazo/opendkim-cookbook)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/opendkim-cookbook.svg?style=flat)](https://gemnasium.com/zuazo/opendkim-cookbook)
 [![Code Climate](http://img.shields.io/codeclimate/github/zuazo/opendkim-cookbook.svg?style=flat)](https://codeclimate.com/github/zuazo/opendkim-cookbook)
 [![Build Status](http://img.shields.io/travis/zuazo/opendkim-cookbook.svg?style=flat)](https://travis-ci.org/zuazo/opendkim-cookbook)
