@@ -3,19 +3,19 @@ All notable changes to the `opendkim` cookbook will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-### Added
+## [2.0.0] - 2017-03-31
+### Added in 2.0.0
 - Chef `13` support.
 - metadata: Add `chef_version`.
 - README: Add GitHub badge.
 
-### Changed
+### Changed in 2.0.0
 - CHANGELOG: Follow "Keep a CHANGELOG".
 
-### Removed
+### Removed in 2.0.0
 - Drop Chef `< 12` and Ruby `< 2.2` support.
 
-### Improved
+### Improved in 2.0.0
 - README: Add doc and license badges.
 - Improve TESTING documentation.
 - Update RuboCop to `0.48`.
@@ -46,6 +46,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 0.1.0 - 2015-05-21
 - Initial release of `opendkim`.
 
-[Unreleased]: https://github.com/zuazo/opendkim-cookbook/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/zuazo/opendkim-cookbook/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/zuazo/opendkim-cookbook/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/zuazo/opendkim-cookbook/compare/0.2.0...1.0.0
 [0.2.0]: https://github.com/zuazo/opendkim-cookbook/compare/0.1.0...0.2.0
