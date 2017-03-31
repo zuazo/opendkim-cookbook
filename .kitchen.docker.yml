@@ -49,4 +49,5 @@ platforms:
   driver_config:
     image: ringo/scientific:7.2
     platform: rhel
-
+    privileged: true
+    run_command: /sbin/init
