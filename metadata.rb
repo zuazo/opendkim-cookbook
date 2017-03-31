@@ -72,9 +72,6 @@ attribute 'opendkim/require_yum_epel',
           choice: %w(true false),
           calculated: true
 
-grouping 'opendkim/service',
-         description: 'OpenDKIM service platform related configurations.'
-
 attribute 'opendkim/service/name',
           display_name: 'opendkim service name',
           description: 'OpenDKIM system service name.',
@@ -88,9 +85,6 @@ attribute 'opendkim/service/supports',
           type: 'hash',
           required: 'optional',
           calculated: true
-
-grouping 'opendkim/packages',
-         description: 'OpenDKIM distribution package names.'
 
 attribute 'opendkim/packages/tools',
           display_name: 'opendkim packages tools',
