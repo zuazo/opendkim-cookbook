@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+- Chef `13` support.
 - metadata: Add `chef_version`.
 - README: Add GitHub badge.
 

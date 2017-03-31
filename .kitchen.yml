@@ -5,6 +5,9 @@ driver:
 provisioner:
   name: chef_zero
   require_chef_omnibus: true
+  client_rb:
+    treat_deprecation_warnings_as_errors: true
+    resource_cloning: false
 
 platforms:
 - name: centos-5.11
