@@ -10,7 +10,6 @@ provisioner:
     resource_cloning: false
 
 platforms:
-- name: centos-5.11
 - name: centos-6.7
 - name: centos-7.1
 - name: debian-6.0.10

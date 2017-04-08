@@ -9,7 +9,6 @@ services: docker
 env:
   matrix:
   - TESTS="style unit" CHEF_VERSION="~> 12.0"
-  - TESTS="integration[default-centos-5,verify]"
   - TESTS="integration[default-centos-6,verify]"
   - TESTS="integration[default-centos-7,verify]"
   - TESTS="integration[default-debian-7,verify]"
